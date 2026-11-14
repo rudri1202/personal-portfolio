@@ -4,7 +4,7 @@
 - **Claude Code** (Anthropic, Claude Opus 5.5 model), used through the VS Code extension.
 
 ## Tasks where AI helped
-AI was used heavily on this project. Claude Code:
+I used Claude Code as a coding assistant. I provided the requirements, my CV and profile links, and decided what personal content to include or leave out. Claude Code:
 - Read the assignment PDF and my CV (PDF) and planned the sections from them.
 - Fetched my public GitHub repository list and project READMEs to choose real projects and write accurate descriptions.
 - Downloaded my GitHub profile picture to use as the profile photo.
