@@ -1,0 +1,761 @@
+/* =========================================================
+   1. Design tokens (colors, spacing, typography)
+   Light theme is the default; dark theme overrides the colors.
+   ========================================================= */
+:root {
+    --color-bg: #f8fafc;
+    --color-bg-alt: #eef2ff;
+    --color-surface: #ffffff;
+    --color-text: #1e293b;
+    --color-text-muted: #475569;
+    --color-border: #cbd5e1;
+    --color-primary: #4338ca;
+    --color-primary-hover: #3730a3;
+    --color-primary-soft: #e0e7ff;
+    --color-on-primary: #ffffff;
+    --color-error: #b91c1c;
+    --color-success: #15803d;
+    --color-success-soft: #dcfce7;
+    --color-focus: #f59e0b;
+
+    --shadow-card: 0 4px 16px rgba(15, 23, 42, 0.08);
+    --shadow-card-hover: 0 10px 28px rgba(15, 23, 42, 0.14);
+
+    --font-body: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    --radius: 12px;
+    --header-height: 68px;
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2.5rem;
+    --space-xl: 5rem;
+}
+
+[data-theme="dark"] {
+    --color-bg: #0f172a;
+    --color-bg-alt: #162036;
+    --color-surface: #1e293b;
+    --color-text: #e2e8f0;
+    --color-text-muted: #a5b4c8;
+    --color-border: #334155;
+    --color-primary: #a5b4fc;
+    --color-primary-hover: #c7d2fe;
+    --color-primary-soft: #312e81;
+    --color-on-primary: #1e1b4b;
+    --color-error: #fca5a5;
+    --color-success: #86efac;
+    --color-success-soft: #14532d;
+
+    --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.35);
+    --shadow-card-hover: 0 10px 28px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================================
+   2. Base styles
+   ========================================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+    margin: 0 0 var(--space-sm);
+}
+
+p {
+    margin: 0 0 var(--space-sm);
+}
+
+a {
+    color: var(--color-primary);
+}
+
+a:hover {
+    color: var(--color-primary-hover);
+}
+
+/* One consistent, highly visible focus ring for every interactive element */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: var(--space-sm);
+    z-index: 200;
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    border-radius: var(--radius);
+}
+
+.skip-link:focus {
+    top: var(--space-sm);
+}
+
+/* =========================================================
+   3. Reusable components: buttons, cards, badges
+   ========================================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--color-primary);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    color: var(--color-on-primary);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-primary-soft);
+}
+
+.btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.badge-list,
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.badge,
+.tech-list li {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    background-color: var(--color-primary-soft);
+    border-radius: 999px;
+}
+
+[data-theme="dark"] .badge,
+[data-theme="dark"] .tech-list li {
+    color: var(--color-text);
+}
+
+/* =========================================================
+   4. Header & navigation
+   ========================================================= */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.3s ease;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    min-height: var(--header-height);
+}
+
+.brand {
+    margin-right: auto;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.brand-accent {
+    color: var(--color-primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    border-radius: 999px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-primary);
+    background-color: var(--color-primary-soft);
+}
+
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-link.active {
+    color: var(--color-text);
+}
+
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0.4rem 0.9rem;
+    font: inherit;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--color-primary-soft);
+}
+
+/* Hamburger button: hidden on large screens, shown via media query */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    cursor: pointer;
+    order: 3;
+}
+
+.menu-toggle-bar {
+    display: block;
+    height: 2px;
+    background-color: var(--color-text);
+    border-radius: 2px;
+}
+
+/* =========================================================
+   5. Sections (shared)
+   ========================================================= */
+.section {
+    padding: var(--space-xl) 0;
+    /* Keeps section headings visible below the sticky header after jumping to them */
+    scroll-margin-top: var(--header-height);
+}
+
+.section-alt {
+    background-color: var(--color-bg-alt);
+}
+
+.section-title {
+    font-size: clamp(1.75rem, 4vw, 2.4rem);
+    text-align: center;
+}
+
+.section-subtitle {
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+    text-align: center;
+    color: var(--color-text-muted);
+}
+
+/* =========================================================
+   6. Home / hero
+   ========================================================= */
+.hero {
+    padding: var(--space-xl) 0;
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.greeting {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    background-color: var(--color-primary-soft);
+    border-radius: 999px;
+}
+
+[data-theme="dark"] .greeting {
+    color: var(--color-text);
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+}
+
+.highlight {
+    color: var(--color-primary);
+}
+
+.hero-role {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.hero-intro {
+    max-width: 540px;
+    color: var(--color-text-muted);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.welcome-message {
+    margin-top: var(--space-md);
+    padding: var(--space-sm);
+    background-color: var(--color-surface);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 8px;
+    box-shadow: var(--shadow-card);
+}
+
+/* Decorative initials badge in place of a photo */
+.hero-avatar {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(300px, 70vw);
+    aspect-ratio: 1;
+    font-size: clamp(4rem, 12vw, 6.5rem);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    background: linear-gradient(135deg, #4338ca, #b45309);
+    border: 8px solid var(--color-surface);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--color-primary-soft), var(--shadow-card-hover);
+}
+
+/* =========================================================
+   7. About
+   ========================================================= */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+}
+
+.about-text p {
+    color: var(--color-text-muted);
+}
+
+.about-text strong {
+    color: var(--color-text);
+}
+
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.info-card {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+    padding: var(--space-sm);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+}
+
+.info-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.info-card h3 {
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+
+.info-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+}
+
+/* =========================================================
+   8. Skills & projects (card grids)
+   ========================================================= */
+.skills-grid,
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+}
+
+.skill-card h3,
+.project-card h3 {
+    font-size: 1.15rem;
+}
+
+.skill-card:hover,
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    border-top: 4px solid var(--color-primary);
+}
+
+.project-card p {
+    color: var(--color-text-muted);
+}
+
+.project-card .tech-list {
+    margin-bottom: var(--space-md);
+}
+
+/* margin-top: auto pushes the link to the bottom so all cards line up */
+.project-link {
+    margin-top: auto;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
+
+.project-link-disabled {
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* =========================================================
+   9. Contact form
+   ========================================================= */
+.contact-container {
+    max-width: 680px;
+}
+
+.form-group {
+    margin-bottom: var(--space-md);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+.required {
+    color: var(--color-error);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font: inherit;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    transition: border-color 0.2s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input:hover,
+.form-group textarea:hover {
+    border-color: var(--color-text-muted);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--color-primary);
+}
+
+/* Invalid fields get a red border AND an error message with an icon,
+   so the state is never communicated by color alone */
+.form-group input[aria-invalid="true"],
+.form-group textarea[aria-invalid="true"] {
+    border-color: var(--color-error);
+}
+
+.error-message {
+    min-height: 1.4em;
+    margin: 0.35rem 0 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-error);
+}
+
+.form-note {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.form-status {
+    margin: var(--space-md) 0 0;
+    padding: var(--space-sm);
+    font-weight: 600;
+    color: var(--color-success);
+    background-color: var(--color-success-soft);
+    border: 1px solid var(--color-success);
+    border-radius: 8px;
+}
+
+/* =========================================================
+   10. Footer
+   ========================================================= */
+.site-footer {
+    padding: var(--space-md) 0;
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+}
+
+.footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+}
+
+.footer-inner p {
+    margin: 0;
+    color: var(--color-text-muted);
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.footer-links a {
+    display: inline-block;
+    padding: 0.4rem 0;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================================
+   11. Responsive layouts
+   ========================================================= */
+
+/* Tablet */
+@media (max-width: 900px) {
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile & small tablet: collapse the nav into a hamburger menu */
+@media (max-width: 768px) {
+    :root {
+        --space-xl: 3.5rem;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: var(--space-xs);
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .theme-toggle-label {
+        display: none;
+    }
+
+    .nav-links {
+        display: none;
+        order: 4;
+        flex-direction: column;
+        width: 100%;
+        padding-bottom: var(--space-sm);
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+    }
+
+    .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-avatar {
+        grid-row: 1;
+        width: 180px;
+        font-size: 3.5rem;
+    }
+
+    .hero-intro {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .welcome-message {
+        text-align: left;
+    }
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+    .container {
+        padding: 0 var(--space-sm);
+    }
+
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
