@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Rudri Jani, Software Engineer and Computer Science graduate from IIT Jodhpur.">
+    <title>Rudri Jani | Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- ===== Header & Navigation ===== -->
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Main navigation">
+            <a class="brand" href="#home">Rudri<span class="brand-accent">.</span></a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+                <span class="menu-toggle-bar" aria-hidden="true"></span>
+                <span class="menu-toggle-bar" aria-hidden="true"></span>
+                <span class="menu-toggle-bar" aria-hidden="true"></span>
+                <span class="visually-hidden">Open menu</span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a class="nav-link" href="#home">Home</a></li>
+                <li><a class="nav-link" href="#about">About</a></li>
+                <li><a class="nav-link" href="#skills">Skills</a></li>
+                <li><a class="nav-link" href="#projects">Projects</a></li>
+                <li><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+
+            <button class="theme-toggle" type="button" aria-pressed="false">
+                <span class="theme-toggle-icon" aria-hidden="true">🌙</span>
+                <span class="theme-toggle-label">Dark mode</span>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- ===== Home ===== -->
+        <section class="hero section" id="home" aria-labelledby="home-title">
+            <div class="container hero-inner">
+                <div class="hero-text">
+                    <p class="greeting" id="greeting">Hello!</p>
+                    <h1 id="home-title">Hi, I'm <span class="highlight">Rudri Jani</span></h1>
+                    <p class="hero-role">Software Engineer &middot; Backend &amp; Cloud</p>
+                    <p class="hero-intro">
+                        I'm a Computer Science graduate from IIT Jodhpur who enjoys building
+                        reliable backend services, data pipelines and distributed systems.
+                        Welcome to my corner of the internet!
+                    </p>
+
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" type="button" id="welcome-button">Welcome!</button>
+                        <a class="btn btn-outline" href="#projects">View My Projects</a>
+                    </div>
+
+                    <p class="welcome-message" id="welcome-message" role="status" aria-live="polite" hidden></p>
+                </div>
+
+                <div class="hero-avatar" aria-hidden="true">RJ</div>
+            </div>
+        </section>
+
+        <!-- ===== About ===== -->
+        <section class="section section-alt" id="about" aria-labelledby="about-title">
+            <div class="container">
+                <h2 class="section-title" id="about-title">About Me</h2>
+                <p class="section-subtitle">A little bit about who I am and what I'm working towards.</p>
+
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            I'm Rudri, a Software Development Engineer who loves turning complex problems
+                            into clean, dependable systems. I recently completed my B.Tech in Computer Science
+                            and Engineering at <strong>IIT Jodhpur</strong>, and I now work on backend services
+                            and data workflows using Python, FastAPI, Databricks and Azure.
+                        </p>
+                        <p>
+                            Through my past internship experience and personal projects, I've worked on cloud
+                            automation, data pipelines, search systems and distributed networking. I enjoy
+                            understanding how things work under the hood and building them from scratch.
+                        </p>
+                        <p>
+                            <strong>Career objective:</strong> to grow as a backend and distributed systems
+                            engineer, building scalable products that solve real problems for real people.
+                        </p>
+                    </div>
+
+                    <ul class="info-list">
+                        <li class="info-card">
+                            <span class="info-icon" aria-hidden="true">🎓</span>
+                            <div>
+                                <h3>Education</h3>
+                                <p>B.Tech, Computer Science &amp; Engineering, IIT Jodhpur</p>
+                            </div>
+                        </li>
+                        <li class="info-card">
+                            <span class="info-icon" aria-hidden="true">💼</span>
+                            <div>
+                                <h3>Experience</h3>
+                                <p>Software Development Engineer, plus past internship experience in software engineering</p>
+                            </div>
+                        </li>
+                        <li class="info-card">
+                            <span class="info-icon" aria-hidden="true">💡</span>
+                            <div>
+                                <h3>Interests</h3>
+                                <p>Distributed systems, cloud computing, machine learning and basketball</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Skills ===== -->
+        <section class="section" id="skills" aria-labelledby="skills-title">
+            <div class="container">
+                <h2 class="section-title" id="skills-title">Skills</h2>
+                <p class="section-subtitle">Technologies and fundamentals I work with regularly.</p>
+
+                <div class="skills-grid">
+                    <article class="card skill-card">
+                        <h3>Languages</h3>
+                        <ul class="badge-list">
+                            <li class="badge">Python</li>
+                            <li class="badge">Java</li>
+                            <li class="badge">C / C++</li>
+                            <li class="badge">JavaScript</li>
+                            <li class="badge">TypeScript</li>
+                            <li class="badge">SQL</li>
+                        </ul>
+                    </article>
+
+                    <article class="card skill-card">
+                        <h3>Backend &amp; Frameworks</h3>
+                        <ul class="badge-list">
+                            <li class="badge">FastAPI</li>
+                            <li class="badge">Spring Boot</li>
+                            <li class="badge">REST APIs</li>
+                            <li class="badge">Microservices</li>
+                            <li class="badge">Node.js</li>
+                            <li class="badge">Django</li>
+                        </ul>
+                    </article>
+
+                    <article class="card skill-card">
+                        <h3>Cloud &amp; DevOps</h3>
+                        <ul class="badge-list">
+                            <li class="badge">Azure</li>
+                            <li class="badge">AWS</li>
+                            <li class="badge">Docker</li>
+                            <li class="badge">Kubernetes</li>
+                            <li class="badge">Git / GitHub</li>
+                            <li class="badge">CI/CD</li>
+                        </ul>
+                    </article>
+
+                    <article class="card skill-card">
+                        <h3>Data &amp; Storage</h3>
+                        <ul class="badge-list">
+                            <li class="badge">MySQL</li>
+                            <li class="badge">Redis</li>
+                            <li class="badge">Databricks</li>
+                            <li class="badge">FAISS</li>
+                            <li class="badge">Power BI</li>
+                        </ul>
+                    </article>
+
+                    <article class="card skill-card">
+                        <h3>CS Fundamentals</h3>
+                        <ul class="badge-list">
+                            <li class="badge">Data Structures</li>
+                            <li class="badge">Algorithms</li>
+                            <li class="badge">OOP</li>
+                            <li class="badge">System Design</li>
+                            <li class="badge">Operating Systems</li>
+                        </ul>
+                    </article>
+
+                    <article class="card skill-card">
+                        <h3>Professional</h3>
+                        <ul class="badge-list">
+                            <li class="badge">Team Leadership</li>
+                            <li class="badge">Communication</li>
+                            <li class="badge">Event Management</li>
+                            <li class="badge">Problem Solving</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Projects ===== -->
+        <section class="section section-alt" id="projects" aria-labelledby="projects-title">
+            <div class="container">
+                <h2 class="section-title" id="projects-title">Projects</h2>
+                <p class="section-subtitle">A few things I've designed and built.</p>
+
+                <div class="projects-grid">
+                    <article class="card project-card">
+                        <h3>Peer-to-Peer Gossip Protocol</h3>
+                        <p>
+                            A decentralized, fault-tolerant network of peer and seed nodes that spread messages
+                            using a gossip protocol, with heartbeat-based liveness checks to detect failed peers.
+                        </p>
+                        <ul class="tech-list" aria-label="Technologies used">
+                            <li>Python</li>
+                            <li>asyncio</li>
+                            <li>Socket Programming</li>
+                        </ul>
+                        <a class="project-link" href="https://github.com/rudri1202/Peer-to-peer-gossip"
+                            target="_blank" rel="noopener noreferrer">
+                            View on GitHub <span aria-hidden="true">&rarr;</span>
+                            <span class="visually-hidden">(opens in a new tab)</span>
+                        </a>
+                    </article>
+
+                    <article class="card project-card">
+                        <h3>Generic Data Encryption Module</h3>
+                        <p>
+                            A reusable encryption library (AES-256 / RSA-2048) for Spring Boot microservices.
+                            Custom annotations and AOP-based interception let APIs plug in encryption with
+                            minimal code, with Redis-backed session management.
+                        </p>
+                        <ul class="tech-list" aria-label="Technologies used">
+                            <li>Java</li>
+                            <li>Spring Boot</li>
+                            <li>Redis</li>
+                            <li>AOP</li>
+                        </ul>
+                        <span class="project-link project-link-disabled">Private repository &ndash; link not available</span>
+                    </article>
+
+                    <article class="card project-card">
+                        <h3>Reinforcement Learning: PPO</h3>
+                        <p>
+                            An Actor-Critic implementation of Proximal Policy Optimization on the CartPole-v1
+                            environment, comparing clipped and unclipped policy objectives.
+                        </p>
+                        <ul class="tech-list" aria-label="Technologies used">
+                            <li>Python</li>
+                            <li>PyTorch</li>
+                            <li>Gymnasium</li>
+                        </ul>
+                        <a class="project-link" href="https://github.com/rudri1202/reinforcement-learning-ppo"
+                            target="_blank" rel="noopener noreferrer">
+                            View on GitHub <span aria-hidden="true">&rarr;</span>
+                            <span class="visually-hidden">(opens in a new tab)</span>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Contact ===== -->
+        <section class="section" id="contact" aria-labelledby="contact-title">
+            <div class="container contact-container">
+                <h2 class="section-title" id="contact-title">Get in Touch</h2>
+                <p class="section-subtitle">
+                    Have a question or an opportunity? Send me a message, or reach me on
+                    <a href="https://www.linkedin.com/in/rudri-jani-579b17256/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    and <a href="https://github.com/rudri1202" target="_blank" rel="noopener noreferrer">GitHub</a>.
+                </p>
+
+                <form class="contact-form card" id="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="full-name">Full Name <span class="required" aria-hidden="true">*</span></label>
+                        <input type="text" id="full-name" name="fullName" autocomplete="name"
+                            placeholder="e.g. Priya Sharma" aria-describedby="full-name-error" required>
+                        <p class="error-message" id="full-name-error"></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required" aria-hidden="true">*</span></label>
+                        <input type="email" id="email" name="email" autocomplete="email"
+                            placeholder="e.g. priya@example.com" aria-describedby="email-error" required>
+                        <p class="error-message" id="email-error"></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
+                        <textarea id="message" name="message" rows="5"
+                            placeholder="Write your message here..." aria-describedby="message-error" required></textarea>
+                        <p class="error-message" id="message-error"></p>
+                    </div>
+
+                    <p class="form-note">Fields marked with <span class="required">*</span> are required.</p>
+
+                    <button class="btn btn-primary btn-block" type="submit" id="submit-button">Send Message</button>
+
+                    <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; <span id="current-year">2026</span> Rudri Jani. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="https://github.com/rudri1202" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/in/rudri-jani-579b17256/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="#home">Back to top <span aria-hidden="true">&uarr;</span></a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
