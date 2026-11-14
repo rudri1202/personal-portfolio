@@ -129,5 +129,101 @@ const sectionObserver = new IntersectionObserver(
 
 document.querySelectorAll("main section[id]").forEach((section) => sectionObserver.observe(section));
 
+/* ---------- Contact form validation ---------- */
+const contactForm = document.getElementById("contact-form");
+const submitButton = document.getElementById("submit-button");
+const formStatus = document.getElementById("form-status");
+
+// Simple check: something@something.domain, with no spaces
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+// Each field has a validator that returns an error message, or "" if valid.
+// Values are trimmed first, so whitespace-only input counts as empty.
+const formFields = [
+    {
+        input: document.getElementById("full-name"),
+        validate(value) {
+            if (value === "") return "Please enter your full name.";
+            if (value.length < 2) return "Name must be at least 2 characters long.";
+            return "";
+        },
+    },
+    {
+        input: document.getElementById("email"),
+        validate(value) {
+            if (value === "") return "Please enter your email address.";
+            if (!EMAIL_PATTERN.test(value)) return "Please enter a valid email address, e.g. name@example.com.";
+            return "";
+        },
+    },
+    {
+        input: document.getElementById("message"),
+        validate(value) {
+            if (value === "") return "Please enter a message.";
+            if (value.length < 10) return "Message must be at least 10 characters long.";
+            return "";
+        },
+    },
+];
+
+function showFieldError(input, message) {
+    const errorElement = document.getElementById(`${input.id}-error`);
+    // The warning icon means the error is not shown by color alone
+    errorElement.textContent = message ? `⚠ ${message}` : "";
+    input.setAttribute("aria-invalid", String(Boolean(message)));
+}
+
+function validateField(field) {
+    const errorMessage = field.validate(field.input.value.trim());
+    showFieldError(field.input, errorMessage);
+    return errorMessage === "";
+}
+
+// After a field has been marked invalid, re-check it while the user types
+// so the error disappears as soon as it is fixed
+formFields.forEach((field) => {
+    field.input.addEventListener("input", () => {
+        if (field.input.getAttribute("aria-invalid") === "true") {
+            validateField(field);
+        }
+        formStatus.hidden = true;
+    });
+});
+
+contactForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // No backend: handle everything on the page
+
+    // Ignore repeated clicks while a submission is already in progress
+    if (submitButton.disabled) {
+        return;
+    }
+
+    formStatus.hidden = true;
+
+    // Validate every field (not just the first) so all errors show at once
+    const results = formFields.map(validateField);
+    const firstInvalidIndex = results.indexOf(false);
+
+    if (firstInvalidIndex !== -1) {
+        formFields[firstInvalidIndex].input.focus();
+        return;
+    }
+
+    const visitorName = formFields[0].input.value.trim();
+
+    // Simulate sending, and lock the button so it can't be clicked twice
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+
+    setTimeout(() => {
+        formStatus.textContent = `✔ Thank you, ${visitorName}! Your message has been sent successfully. I'll get back to you soon.`;
+        formStatus.hidden = false;
+        contactForm.reset();
+        formFields.forEach((field) => showFieldError(field.input, ""));
+        submitButton.disabled = false;
+        submitButton.textContent = "Send Message";
+    }, 1000);
+});
+
 /* ---------- Footer year ---------- */
 document.getElementById("current-year").textContent = new Date().getFullYear();
