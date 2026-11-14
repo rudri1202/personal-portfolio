@@ -7,7 +7,6 @@
 I used Claude Code as a coding assistant. I provided the requirements, my CV and profile links, and decided what personal content to include or leave out. Claude Code:
 - Read the assignment PDF and my CV (PDF) and planned the sections from them.
 - Fetched my public GitHub repository list and project READMEs to choose real projects and write accurate descriptions.
-- Downloaded my GitHub profile picture to use as the profile photo.
 - Wrote the first versions of `index.html`, `css/style.css` and `js/script.js`.
 - Wrote an automated browser test script (Puppeteer + Microsoft Edge) to check the required user flow and to take the README screenshots.
 - Drafted `README.md` and this report.
@@ -18,6 +17,7 @@ I used Claude Code as a coding assistant. I provided the requirements, my CV and
 ## Code accepted, modified or rejected
 - **Accepted:** the overall page structure, the CSS design tokens (custom properties for light and dark themes), the Grid/Flexbox layouts, the theme toggle, the greeting, the welcome message, the mobile menu and the form validation logic.
 - **Modified (my instructions):** the About section was changed so it does not list individual past companies. It only mentions "past internship experience", as I asked. My phone number and the client name from my current job were left out on purpose.
+- **Rejected:** Claude Code downloaded my GitHub profile picture and used it in the hero section without asking me. I had it removed and replaced with a CSS initials badge ("RJ").
 - **Modified / rejected (by the AI during development):** an inline `<script>` in `<head>` that applied the saved theme before the page painted was removed. The assignment requires HTML, CSS and JS in separate files, so all JavaScript now lives in `js/script.js`. The trade-off is a very brief theme flash on reload in dark mode.
 
 ## Bugs or incorrect suggestions
